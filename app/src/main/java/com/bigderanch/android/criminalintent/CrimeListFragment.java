@@ -86,6 +86,7 @@ public class CrimeListFragment extends Fragment {
         public  void bind(Crime crime) {
 
         }
+        // commtnet
 
         @Override
         public int getItemViewType(int position) {
