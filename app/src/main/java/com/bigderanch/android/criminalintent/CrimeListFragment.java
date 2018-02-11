@@ -84,7 +84,6 @@ public class CrimeListFragment extends Fragment {
         }
 
         public  void bind(Crime crime) {
-            mCrimes = crime;
 
         }
 
