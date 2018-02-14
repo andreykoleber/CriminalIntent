@@ -36,16 +36,11 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public void onResume() {
         super.onResume();
-        //updateUi();
+        updateUi();
     }
 
     private void updateUi() {
@@ -55,7 +50,7 @@ public class CrimeListFragment extends Fragment {
             mAdapter = new CrimeAdapter(crimes);
             mCrimeRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.notifyItemChanged(3);
+            mAdapter.notifyDataSetChanged();
         }
 
     }
@@ -84,27 +79,10 @@ public class CrimeListFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
-            startActivityForResult(intent, REQUEST_CRIME);
+            startActivity(intent);
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CRIME) {
-            int indexOfChangedCrime = data.getIntExtra(CHANGED_CRIME_ID, 0);
-
-            CrimeLab crimeLab = CrimeLab.get(getActivity());
-            List<Crime> crimes = crimeLab.getCrimes();
-            if (mAdapter == null) {
-                mAdapter = new CrimeAdapter(crimes);
-                mCrimeRecyclerView.setAdapter(mAdapter);
-            } else {
-                mAdapter.notifyItemChanged(indexOfChangedCrime);
-            }
-
-        }
-    }
 
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
 
