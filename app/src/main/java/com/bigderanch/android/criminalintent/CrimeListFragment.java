@@ -36,7 +36,6 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -78,7 +77,7 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }
     }
@@ -87,7 +86,7 @@ public class CrimeListFragment extends Fragment {
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {
 
         private List<Crime> mCrimes;
-        public CrimeAdapter(List<Crime> crimes) {
+        CrimeAdapter(List<Crime> crimes) {
             mCrimes = crimes;
         }
 
@@ -102,11 +101,6 @@ public class CrimeListFragment extends Fragment {
             Crime crime = mCrimes.get(position);
             holder.bind(crime);
         }
-
-        public  void bind(Crime crime) {
-
-        }
-        // commtnet
 
         @Override
         public int getItemViewType(int position) {
