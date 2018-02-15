@@ -3,14 +3,14 @@ package com.bigderanch.android.criminalintent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -51,11 +51,19 @@ public class CrimePagerActivity extends AppCompatActivity {
             }
         });
 
-        UUID crimeId = (UUID) getIntent().getExtras().getSerializable(EXTRA_CRIME_ID);
-        for (int i = 0; i < mCrimes.size(); i++) {
-            if (mCrimes.get(i).getId().equals(crimeId)) {
-                viewPager.setCurrentItem(i);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            UUID crimeId = (UUID) extras.getSerializable(EXTRA_CRIME_ID);
+            for (int i = 0; i < mCrimes.size(); i++) {
+                if (mCrimes.get(i).getId().equals(crimeId)) {
+                    viewPager.setCurrentItem(i);
+                }
             }
+
         }
+
     }
+
+
 }
