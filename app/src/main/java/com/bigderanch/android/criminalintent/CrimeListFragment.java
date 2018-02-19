@@ -25,6 +25,10 @@ public class CrimeListFragment extends Fragment {
     private static final int REQUEST_CRIME = 1;
     private static final String CHANGED_CRIME_ID = "changed_crime_id";
 
+    public static CrimeListFragment newInstance() {
+        return new CrimeListFragment();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
