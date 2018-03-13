@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class CrimePagerActivity extends AppCompatActivity {
+public class CrimePagerActivity extends AppCompatActivity implements CrimeFragment.Callbacks{
 
     private List<Crime> mCrimes;
 
@@ -28,6 +28,9 @@ public class CrimePagerActivity extends AppCompatActivity {
         return intent;
     }
 
+
+    @Override
+    public void onCrimeUpdated(Crime crime) {}
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
